@@ -3,6 +3,11 @@
         <h1>
             Main 
         </h1>
+        <div>
+            <p v-for="project in projects">
+                {{ project.name}}
+            </p>
+        </div>
     </div>
 </template>
 <script>
@@ -12,9 +17,7 @@ export default {
 
     data(){
         return{
-            project:[
-
-            ],
+            project:[],
             apiUrl:'http://127.0.0.1:8000/api/projects',
         }
     },
@@ -25,8 +28,9 @@ export default {
             axios.get(this.apiUrl,{
                 params:{}
             })
-            .then(function (response){
-                console.log(response)
+            .then( (response) =>{
+                console.log(response.data.data)
+                this.projects = response.data.data;
             })
             .catch(function (error) {
                 console.log(error);
