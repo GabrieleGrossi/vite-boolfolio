@@ -1,21 +1,3 @@
-<template>
-    <div>
-        <div v-for="project in projects">
-            <h3>
-                {{ project.name }}
-            </h3>
-            <h5>
-                {{  project.goal }}
-            </h5>
-            <span>
-                Tipo di progetto: #{{ project.type.name }} 
-            </span>
-            <span v-for="technology in project.technologies">
-                #{{ project.technologies.name }} 
-            </span>
-        </div>
-    </div>
-</template>
 <script>
 import axios from 'axios';
 export default {
@@ -23,7 +5,7 @@ export default {
 
     data(){
         return{
-            project:[],
+            projects: [],
             apiUrl:'http://127.0.0.1:8000/api/projects',
         }
     },
@@ -35,8 +17,9 @@ export default {
                 params:{}
             })
             .then( (response) =>{
-                console.log(response.data.data)
+                //console.log(response.data.data)
                 this.projects = response.data.data;
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -47,8 +30,26 @@ export default {
         this.getProjects();
     }
 }
-
 </script>
+
+<template>
+    <div>
+        <div v-for="project in this.projects"> 
+            <h3>
+                {{ project.name }}
+            </h3>
+            <h5>
+                {{  project.goal }}
+            </h5>
+            <span>
+                Tipo di progetto: #{{ project.type.name }}
+            </span>
+            <span v-for="technology in project.technologies">
+                #{{ technology.name }} 
+            </span>
+        </div>
+    </div>
+</template>
 <style lang="scss">
     
 </style>
