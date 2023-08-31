@@ -25,7 +25,7 @@ export default {
             .then( (response) =>{
                 //console.log(response.data.data)
                 this.projects = response.data.results.data;
-                console.log(response.data.results.data)
+                console.log(response.data.results.data[0].technologies)
             })
             .catch(function (error) {
                 console.log(error);
