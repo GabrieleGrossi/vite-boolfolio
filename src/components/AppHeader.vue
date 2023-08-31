@@ -3,19 +3,19 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#">
+                    <router-link :to="{ name: 'homepage' }" >
                         Homepage
-                    </a>
+                    </router-link>
                 </li>
                 <li>
-                    <a href="#">
+                    <router-link :to="{ name: 'projects.index' }" >
                         Projects
-                    </a>
+                    </router-link>
                 </li>
                 <li>
-                    <a href="#">
+                    <router-link :to="{ name: 'projects.show' }" >
                         SingleProject
-                    </a>
+                    </router-link>
                 </li>
             </ul>
         </nav>
@@ -27,10 +27,16 @@ export default {
 }
 </script>
 <style lang="scss">
+    nav{
+        background-color: rgb(221, 221, 221);
+        border-radius: 1rem;
+        height: 100px;
+    }
     ul{
         list-style-type: none;
         display: flex;
         justify-content: space-between;
+        padding: 1.2rem;
     }
     li{
         font-size: 2rem;
