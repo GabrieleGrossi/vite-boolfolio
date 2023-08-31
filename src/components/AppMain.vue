@@ -1,12 +1,18 @@
 <template>
     <div>
-        <h1>
-            Main 
-        </h1>
-        <div>
-            <p v-for="project in projects">
+        <div v-for="project in projects">
+            <h3>
                 {{ project.name }}
-            </p>
+            </h3>
+            <h5>
+                {{  project.goal }}
+            </h5>
+            <span>
+                Tipo di progetto: #{{ project.type.name }} 
+            </span>
+            <span v-for="technology in project.technologies">
+                #{{ project.technologies.name }} 
+            </span>
         </div>
     </div>
 </template>
