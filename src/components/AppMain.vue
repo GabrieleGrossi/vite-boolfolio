@@ -5,7 +5,7 @@
         </h1>
         <div>
             <p v-for="project in projects">
-                {{ project.name}}
+                {{ project.name }}
             </p>
         </div>
     </div>
