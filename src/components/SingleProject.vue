@@ -2,13 +2,12 @@
     <div class="single-project"> 
         <h2>
             {{ project.name }}
-            console.log(project.name)
         </h2>
         <h5>
             {{  project.goal }}
         </h5>
         <h6>
-            Tipo di progetto: #{{ project.type.name }}
+            <!--Tipo di progetto: #{{ project.type.name }}-->
         </h6>
         <span v-for="technology in project.technologies">
             #{{ technology.name }} 

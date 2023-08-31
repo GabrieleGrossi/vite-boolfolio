@@ -24,8 +24,8 @@ export default {
             })
             .then( (response) =>{
                 //console.log(response.data.data)
-                this.projects = response.data.data;
-
+                this.projects = response.data.results.data;
+                console.log(response.data.results.data)
             })
             .catch(function (error) {
                 console.log(error);
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <template>
-    <ProjectList :projects="'projects'"/>
+    <ProjectList :projects='projects'/>
 </template>
 <style lang="scss">
    
