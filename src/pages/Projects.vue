@@ -1,15 +1,9 @@
 <template>
-    <div>
-        <h1>
-            Projects
-        </h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates pariatur doloremque ad reprehenderit ut voluptate quis, inventore tempora! Totam possimus tempore nisi at nam a reiciendis eligendi corporis impedit exercitationem.
-            Nihil iste consequuntur iusto sapiente eius facilis ipsam repellat? Error dolorum voluptas pariatur molestias expedita excepturi debitis, deserunt ex nisi vero veritatis. Amet quia commodi reiciendis at temporibus, reprehenderit consequuntur!
-            Soluta ea rem, exercitationem eaque minima, quas laudantium quo dolores sint libero ipsum atque quis itaque commodi enim. Esse similique dolore, impedit facilis autem doloremque hic tenetur saepe officia ducimus.
-            Dicta minus quas asperiores quia quo quibusdam ex omnis possimus ipsam cupiditate a aspernatur reiciendis nobis qui eligendi ea perferendis illum ab eveniet architecto, fugit incidunt quae mollitia? Corporis, molestiae!
-            Nisi illo nostrum eveniet asperiores soluta ducimus, quae voluptatibus nulla consequuntur culpa enim expedita? Ipsa modi laborum hic aperiam! Excepturi odio quia quam libero, voluptatum ducimus minus facilis numquam praesentium!
-        </p>
+    <h1>
+        Latest Projects:
+    </h1>
+    <div class="projects">
+        <SingleProject class="single-project" v-for="project in projects" :project='project'/>
     </div>
 </template>
 <script>
@@ -18,26 +12,43 @@ import SingleProject from '../components/SingleProject.vue';
 
 export default {
     name: 'Projects',
-    components:{
-        SingleProject,
+    components: { 
+        SingleProject
     },
     data(){
         return{
+            projects: [],
             apiUrl:'http://127.0.0.1:8000/api/projects',
-            project: false
         }
     },
-    methods:{
-        getSingleProject(){
-            console.log(this.$route)
+
+    methods: {
+        getProjects(){
+            //qui prendiamo i vari progetti creati
+
+            axios.get(this.apiUrl,{
+                params:{}
+            })
+            .then( (response) =>{
+                //console.log(response.data.data)
+                this.projects = response.data.results.data;
+                //console.log(response.data.results.data[0].technologies)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
         }
     },
-    created() {
-        this.getSingleProject();
-    },
-    
+    created(){
+        this.getProjects();
+    }
 }
 </script>
-<style lang="scss">
-    
+<style lang="scss" scoped>
+     div.projects{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 </style>
