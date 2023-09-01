@@ -13,8 +13,28 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
+import SingleProject from '../components/SingleProject.vue';
+
 export default {
-    name: 'Projects'
+    name: 'Projects',
+    components:{
+        SingleProject,
+    },
+    data(){
+        return{
+            apiUrl:'http://127.0.0.1:8000/api/projects',
+            project: false
+        }
+    },
+    methods:{
+        getSingleProject(){
+            console.log(this.$route)
+        }
+    },
+    created() {
+        this.getSingleProject();
+    },
     
 }
 </script>
